@@ -12,7 +12,7 @@ bool SolocraftConfig::Initialize()
 {
     sLog.outString("Initializing Solocraft.");
 
-    if (!config.SetSource(SYSCONFDIR"Solocraft.conf", "SoloCraft_"))
+    if (!config.SetSource(SYSCONFDIR"SoloCraft.conf", "SoloCraft_"))
     {
         if (!config.SetSource(_SOLOCRAFT_CONFIG, "SoloCraft_"))
         {
@@ -24,7 +24,7 @@ bool SolocraftConfig::Initialize()
     enabled = config.GetBoolDefault("Solocraft.Enabled", false);
     if (!enabled)
     {
-        sLog.outString("Solocraft is Disabled in solocreaft.conf");
+        sLog.outString("Solocraft is Disabled in SoloCraft.conf");
         return false;
     }
 

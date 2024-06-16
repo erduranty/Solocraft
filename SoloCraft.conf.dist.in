@@ -16,7 +16,7 @@
 ConfVersion=2024061101
 
 # Enable the module? (1: true | 0: false)
-Solocraft.Enable = 1
+Solocraft.Enabled = 1
 
 # Announce the module when the player logs in?
 Solocraft.Announce = 1

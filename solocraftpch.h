@@ -1,1 +1,0 @@
-#include "SoloCraft/SoloCraft.h"

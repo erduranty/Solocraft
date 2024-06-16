@@ -20,19 +20,13 @@ if (BUILD_SOLOCRAFT)
 endif()
 
 # Define Expansion
-if ( ${CMAKE_PROJECT_NAME} MATCHES "Classic")
-  add_definitions(-DSOLOCRAFT_CLASSIC)
-endif()
+add_definitions(-DSOLOCRAFT_CLASSIC)
 if ( ${CMAKE_PROJECT_NAME} MATCHES "TBC")
   add_definitions(-DSOLOCRAFT_TBC)
 endif()
 if ( ${CMAKE_PROJECT_NAME} MATCHES "WoTLK")
+  add_definitions(-DSOLOCRAFT_TBC)
   add_definitions(-DSOLOCRAFT_WoTLK)
-endif()
-
-# Define ENABLE_MODULES if need
-if (BUILD_MODULES)
-  add_definitions(-DENABLE_MODULES)
 endif()
 
 if(PCH)
@@ -43,8 +37,6 @@ add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SRCS})
 
 target_link_libraries(${LIBRARY_NAME}
   PRIVATE shared
-  PRIVATE Detour
-  PRIVATE g3dlite
 )
 
 target_include_directories(${LIBRARY_NAME}
@@ -62,5 +54,5 @@ set_target_properties(${LIBRARY_NAME} PROPERTIES PROJECT_LABEL "SoloCraft")
 
 # Generate PCH
 if(PCH)
-  target_precompile_headers(${LIBRARY_NAME} PRIVATE ${bots_PCH})
+  target_precompile_headers(${LIBRARY_NAME} PRIVATE ${solocraft_PCH})
 endif()

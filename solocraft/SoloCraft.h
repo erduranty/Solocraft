@@ -1,13 +1,12 @@
-#ifndef _SOLOCRAFT_H
-#define _SOLOCRAFT_H
+#pragma once
+
+#include "solocraft/SoloCraftConfig.h"
 
 #include "Entities/ObjectGuid.h"
 #include "Entities/Player.h"
 #include "Maps/Map.h"
 
 #include <map>
-
-using namespace std;
 
 class Solocraft
 {
@@ -20,6 +19,7 @@ class Solocraft
             return instance;
         }
 
+        bool Initialize();
         void OnLogin(Player* player);
         void OnLogout(Player* player);
         //void OnAddMember(Player* player);
@@ -27,6 +27,7 @@ class Solocraft
         //bool ChatFilter(Player* player, string text);
 
     private:
+        SolocraftConfig sSolocraftConfig;
 	    std::map<ObjectGuid, int> _unitDifficulty;
         std::map<ObjectGuid, int> _unitBuff;
         
@@ -38,5 +39,4 @@ class Solocraft
         void ApplyBuffs(Player* player, int multiplier);
 };
 
-#define sSolocraft Solocraft::Instance()
-#endif
+#define sSolocraft MaNGOS::Singleton<Solocraft>::Instance()

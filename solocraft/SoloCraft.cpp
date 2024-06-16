@@ -1,6 +1,6 @@
 #include "solocraft/SoloCraft.h"
-#include "solocraft/SoloCraftConfig.h"
 
+#include "Util/Util.h"
 #include "Groups/Group.h"
 #include "Chat/Chat.h"
 
@@ -9,6 +9,11 @@ INSTANTIATE_SINGLETON_1(Solocraft);
 Solocraft::Solocraft() { }
 
 Solocraft::~Solocraft() { }
+
+bool Solocraft::Initialize()
+{
+    return sSolocraftConfig.Initialize();
+}
 
 void Solocraft::OnLogin(Player* player)
 {

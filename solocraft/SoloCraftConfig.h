@@ -4,18 +4,16 @@
 
 #include <unordered_map>
 
-using namespace std;
-
 class SolocraftConfig
 {
     public:
         SolocraftConfig();
-        static SolocraftConfig& instance()
+        /* static SolocraftConfig& instance()
         {
             static SolocraftConfig instance;
             return instance;
-        }
-
+        }*/
+ 
         bool Initialize();
 
         bool enabled;
@@ -44,4 +42,4 @@ class SolocraftConfig
         Config config;
 };
 
-#define sSolocraftConfig MaNGOS::Singleton<SolocraftConfig>::Instance()
+// #define sSolocraftConfig MaNGOS::Singleton<SolocraftConfig>::Instance()

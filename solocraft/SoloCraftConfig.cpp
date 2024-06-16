@@ -4,8 +4,6 @@
 #include "Globals/SharedDefines.h"
 #include "Log/Log.h"
 
-using namespace std;
-
 INSTANTIATE_SINGLETON_1(SolocraftConfig);
 
 SolocraftConfig::SolocraftConfig():enabled(false) { }
@@ -19,8 +17,6 @@ bool SolocraftConfig::Initialize()
         if (!config.SetSource(_SOLOCRAFT_CONFIG, "SoloCraft_"))
         {
             sLog.outString("Solocraft is Disabled. Unable to open configuration file solocreaft.conf");
-            sLog.outString(SYSCONFDIR"Solocraft.conf");
-            sLog.outString(_SOLOCRAFT_CONFIG.c_str());
             return false;
         }
     }

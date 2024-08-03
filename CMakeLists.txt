@@ -15,6 +15,9 @@ set(LIBRARY_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/solocraftpch.cpp
 )
 
+include_directories(${CMAKE_SOURCE_DIR}/src/modules/modules/src)
+add_definitions(-DENABLE_MODULES)
+
 if (BUILD_SOLOCRAFT)
     add_definitions(-DENABLE_SOLOCRAFT)
 endif()
@@ -37,11 +40,25 @@ add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SRCS})
 
 target_link_libraries(${LIBRARY_NAME}
   PRIVATE shared
+  modules
+  shared
+  RecastNavigation::Detour
 )
 
 target_include_directories(${LIBRARY_NAME}
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
 )
+
+set_target_properties(${LIBRARY_NAME} PROPERTIES PROJECT_LABEL "Solocraft")
+set_target_properties(${LIBRARY_NAME} PROPERTIES FOLDER "Modules")
+
+
+if(UNIX)
+  # Both systems don't have libdl and don't need them
+  if (NOT (CMAKE_SYSTEM_NAME STREQUAL "FreeBSD" OR CMAKE_SYSTEM_NAME STREQUAL "NetBSD"))
+    target_link_libraries(${LIBRARY_NAME} dl)
+  endif()
+endif()
 
 # Install config files
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/SoloCraft.conf.dist.in ${CMAKE_CURRENT_BINARY_DIR}/SoloCraft.conf.dist)

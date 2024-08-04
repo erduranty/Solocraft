@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SoloCraftConfig.h"
+#include "SoloCraftModuleConfig.h"
 
 #include "Entities/ObjectGuid.h"
 #include "Entities/Player.h"

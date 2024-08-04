@@ -102,7 +102,7 @@ namespace cmangos_module
                 }
             }
             else
-                difficulty = GetConfig()->diff_Multiplier[map->GetId()];
+                difficulty = GetConfig()->diff_Multiplier.find(map->GetId());
         }
 
         return difficulty;

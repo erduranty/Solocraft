@@ -25,6 +25,7 @@ namespace cmangos_module
             //bool ChatFilter(Player* player, string text);
 
         private:
+            SolocraftConfig sSolocraftConfig;
             std::map<ObjectGuid, int> _unitDifficulty;
             std::map<ObjectGuid, int> _unitBuff;
 

@@ -7,7 +7,7 @@
 
 namespace cmangos_module
 {
-    Solocraft::Solocraft() : Module("SoloCraft", new SolocraftConfig())
+    Solocraft::Solocraft() : Module("SoloCraft", new SolocraftConfig()) { }
 
     Solocraft::~Solocraft() { }
 

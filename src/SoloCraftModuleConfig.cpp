@@ -14,7 +14,7 @@ namespace cmangos_module
 
         bool SolocraftModuleConfig::OnLoad()
         {
-            enabled = config.GetBoolDefault("Solocraft.Enabled", false);
+            enabled = config.GetBoolDefault("Solocraft.Enabled", true);
             if (!enabled)
             {
                 sLog.outString("Solocraft is Disabled in SoloCraft.conf");

@@ -7,7 +7,7 @@
 
 namespace cmangos_module
 {
-        SolocraftModuleConfig::SolocraftModuleConfig(): ModuleConfig("SoloCraft.conf") , enabled(false)
+        SolocraftModuleConfig::SolocraftModuleConfig(): ModuleConfig("SoloCraft.conf") , enabled(true)
         {
             
         }

@@ -8,6 +8,7 @@ namespace cmangos_module
     class SolocraftConfig : public ModuleConfig
     {
         public:
+            SolocraftConfig();
             /* static SolocraftConfig& instance()
             {
                 static SolocraftConfig instance;

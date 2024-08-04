@@ -10,6 +10,10 @@ namespace cmangos_module
     Solocraft::Solocraft() : Module("SoloCraft", new SolocraftConfig()) { }
 
 //    Solocraft::~Solocraft() { }
+    const SolocraftConfig* Solocraft::GetConfig() const
+    {
+        return (SolocraftConfig*)Module::GetConfig();
+    }
 
     void Solocraft::Initialize()
     {

@@ -5,7 +5,7 @@ set(LIBRARY_NAME solocraft)
 set(solocraft_PCH "${CMAKE_CURRENT_SOURCE_DIR}/solocraftpch.h")
 
 #Base Files
-file(GLOB SoloCraft_Source ${CMAKE_CURRENT_SOURCE_DIR}/solocraft/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/solocraft/*.h)
+file(GLOB SoloCraft_Source ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h)
     source_group("SoloCraft" FILES ${SoloCraft_Source})
 
 #Define base source library
@@ -39,11 +39,17 @@ endif()
 add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SRCS})
 
 target_link_libraries(${LIBRARY_NAME}
-  PRIVATE shared
   modules
   shared
   RecastNavigation::Detour
 )
+
+if(UNIX)
+  # Both systems don't have libdl and don't need them
+  if (NOT (CMAKE_SYSTEM_NAME STREQUAL "FreeBSD" OR CMAKE_SYSTEM_NAME STREQUAL "NetBSD"))
+    target_link_libraries(${LIBRARY_NAME} dl)
+  endif()
+endif()
 
 target_include_directories(${LIBRARY_NAME}
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
@@ -53,13 +59,11 @@ set_target_properties(${LIBRARY_NAME} PROPERTIES PROJECT_LABEL "Solocraft")
 set_target_properties(${LIBRARY_NAME} PROPERTIES FOLDER "Modules")
 
 # Install config files
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/SoloCraft.conf.dist.in ${CMAKE_CURRENT_BINARY_DIR}/SoloCraft.conf.dist)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/SoloCraft.conf.dist.in ${CMAKE_CURRENT_BINARY_DIR}/SoloCraft.conf.dist)
 if (NOT CONF_INSTALL_DIR)
   set(CONF_INSTALL_DIR ${CONF_DIR})
 endif()
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/SoloCraft.conf.dist DESTINATION ${CONF_INSTALL_DIR})
-
-set_target_properties(${LIBRARY_NAME} PROPERTIES PROJECT_LABEL "SoloCraft")
 
 # Generate PCH
 if(PCH)

@@ -17,7 +17,7 @@ namespace cmangos_module
             Solocraft();
             const SolocraftConfig* GetConfig() const override;          
 
-            void Initialize() override;
+            void OnInitialize() override;
             void OnLogin(Player* player);
             void OnLogout(Player* player);
             //void OnAddMember(Player* player);

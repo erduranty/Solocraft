@@ -18,10 +18,10 @@ namespace cmangos_module
             const SolocraftModuleConfig* GetConfig() const override;
 
             void OnInitialize() override;
-            void OnLogin(Player* player);
-            void OnLogout(Player* player);
+            void OnLogin(Player* player) override;
+            void OnLogout(Player* player) override;
             //void OnAddMember(Player* player);
-            void OnMapChanged(Player* player);
+            void OnMapChanged(Player* player) override;
             //bool ChatFilter(Player* player, string text);
 
         private:

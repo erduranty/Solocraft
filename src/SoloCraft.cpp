@@ -9,11 +9,11 @@ namespace cmangos_module
 {
     Solocraft::Solocraft() : Module("SoloCraft", new SolocraftConfig()) { }
 
-    Solocraft::~Solocraft() { }
+//    Solocraft::~Solocraft() { }
 
     bool Solocraft::Initialize()
     {
-        return SolocraftConfig.Initialize();
+        SolocraftConfig.Initialize();
     }
 
     void Solocraft::OnLogin(Player* player)

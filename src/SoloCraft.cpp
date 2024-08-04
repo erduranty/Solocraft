@@ -11,7 +11,7 @@ namespace cmangos_module
 
 //    Solocraft::~Solocraft() { }
 
-    bool Solocraft::Initialize()
+    void Solocraft::Initialize()
     {
         SolocraftConfig.Initialize();
     }

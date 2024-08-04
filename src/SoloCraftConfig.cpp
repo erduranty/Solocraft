@@ -12,7 +12,7 @@ namespace cmangos_module
         bool SolocraftConfig::Initialize()
         {
         sLog.outString("Initializing Solocraft.");
-
+/*
         if (!config.SetSource(SYSCONFDIR"SoloCraft.conf", "SoloCraft_"))
         {
             if (!config.SetSource(_SOLOCRAFT_CONFIG, "SoloCraft_"))
@@ -21,7 +21,7 @@ namespace cmangos_module
                 return false;
             }
         }
-
+*/
         enabled = config.GetBoolDefault("Solocraft.Enabled", false);
         if (!enabled)
         {

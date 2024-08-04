@@ -9,7 +9,8 @@ namespace cmangos_module
     {
         public:
             SolocraftModuleConfig();
-            bool OnWorldPreInitialized();
+            bool OnInitialize() override;
+            bool OnLoad();
             /* static SolocraftConfig& instance()
             {
                 static SolocraftConfig instance;

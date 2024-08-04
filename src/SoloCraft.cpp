@@ -18,7 +18,7 @@ namespace cmangos_module
 
     void Solocraft::OnInitialize()
     {
-        Initialize();
+        sSolocraftConfig.Initialize();
     }
 
     void Solocraft::OnLogin(Player* player)

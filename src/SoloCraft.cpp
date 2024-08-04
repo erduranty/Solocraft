@@ -4,7 +4,7 @@
 #include "Groups/Group.h"
 #include "Chat/Chat.h"
 
-INSTANTIATE_SINGLETON_1(Solocraft);
+INSTANTIATE_SINGLETON_1(cmangos_module::Solocraft);
 
 namespace cmangos_module
 {

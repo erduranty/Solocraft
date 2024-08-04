@@ -37,6 +37,6 @@ namespace cmangos_module
     };
 }
 
-static Solocraft Solocraft;
+#static Solocraft Solocraft;
 
 #define sSolocraft MaNGOS::Singleton<Solocraft>::Instance()

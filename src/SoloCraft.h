@@ -15,12 +15,7 @@ namespace cmangos_module
     {
         public:
             Solocraft();
-            virtual ~Solocraft();
-            static Solocraft& instance()
-            {
-                static Solocraft instance;
-                return instance;
-            }
+            const SolocraftConfig* GetConfig() const override;          
 
             bool Initialize();
             void OnLogin(Player* player);
@@ -30,7 +25,6 @@ namespace cmangos_module
             //bool ChatFilter(Player* player, string text);
 
         private:
-            SolocraftConfig sSolocraftConfig;
             std::map<ObjectGuid, int> _unitDifficulty;
             std::map<ObjectGuid, int> _unitBuff;
 

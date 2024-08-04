@@ -13,12 +13,12 @@ namespace cmangos_module
 
     bool Solocraft::Initialize()
     {
-        return sSolocraftConfig.Initialize();
+        return SolocraftConfig.Initialize();
     }
 
     void Solocraft::OnLogin(Player* player)
     {
-        if (sSolocraftConfig.enabled && sSolocraftConfig.SoloCraftAnnounceModule)
+        if (SolocraftConfig.enabled && SolocraftConfig.SoloCraftAnnounceModule)
         {
             ChatHandler(player->GetSession()).SendSysMessage("This server is running the |cff4CFF00SoloCraft |rmodule.");
         }
@@ -28,7 +28,7 @@ namespace cmangos_module
 
     void Solocraft::OnLogout(Player* player)
     {
-        if (sSolocraftConfig.enabled)
+        if (SolocraftConfig.enabled)
         {
             std::map<ObjectGuid, int>::iterator unitDifficultyIterator = _unitDifficulty.find(player->GetObjectGuid());
             if (unitDifficultyIterator != _unitDifficulty.end())
@@ -46,7 +46,7 @@ namespace cmangos_module
 
     void Solocraft::OnMapChanged(Player* player)
     {
-        if (sSolocraftConfig.enabled)
+        if (SolocraftConfig.enabled)
         {
             Map* map = player->GetMap();
 
@@ -86,7 +86,7 @@ namespace cmangos_module
         int difficulty = 1;
         if (map)
         {
-            if (sSolocraftConfig.diff_Multiplier.find(map->GetId()) == sSolocraftConfig.diff_Multiplier.end())
+            if (SolocraftConfig.diff_Multiplier.find(map->GetId()) == SolocraftConfig.diff_Multiplier.end())
             {
                 if (map->IsRaid())
                 {
@@ -98,7 +98,7 @@ namespace cmangos_module
                 }
             }
             else
-                difficulty = sSolocraftConfig.diff_Multiplier[map->GetId()];
+                difficulty = SolocraftConfig.diff_Multiplier[map->GetId()];
         }
 
         return difficulty;
@@ -126,7 +126,7 @@ namespace cmangos_module
             int difficulty = unitDifficultyIterator->second;
             _unitDifficulty.erase(unitDifficultyIterator);
 
-            if (sSolocraftConfig.SoloCraftAnnounceModule)
+            if (SolocraftConfig.SoloCraftAnnounceModule)
             {
                 ChatHandler(player->GetSession()).PSendSysMessage("Left to %s (removing difficulty = %d)",
                             map->GetMapName(), difficulty);
@@ -147,7 +147,7 @@ namespace cmangos_module
             int multiplier = unitBuffIterator->second;
             _unitBuff.erase(unitBuffIterator);
 
-            if (sSolocraftConfig.SoloCraftAnnounceModule)
+            if (SolocraftConfig.SoloCraftAnnounceModule)
             {
                 ChatHandler(player->GetSession()).PSendSysMessage("Removing Buff Multiplier = %d", multiplier);
             }
@@ -165,7 +165,7 @@ namespace cmangos_module
         ClearBuffs(player, map);
         if (difficulty > 1)
         {
-            if (sSolocraftConfig.SoloCraftAnnounceModule)
+            if (SolocraftConfig.SoloCraftAnnounceModule)
             {
                 ChatHandler(player->GetSession()).PSendSysMessage("Entered %s (difficulty = %d, numInGroup = %d)",
                         map->GetMapName(), (difficulty - numInGroup), numInGroup);
@@ -191,7 +191,7 @@ namespace cmangos_module
         ClearBuffs(player);
         if (multiplier > 1)
         {
-            if (sSolocraftConfig.SoloCraftAnnounceModule)
+            if (SolocraftConfig.SoloCraftAnnounceModule)
             {
                 ChatHandler(player->GetSession()).PSendSysMessage("Apply Buff Multiplier = %d", multiplier);
             }

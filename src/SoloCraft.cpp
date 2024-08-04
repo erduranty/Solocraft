@@ -15,7 +15,7 @@ namespace cmangos_module
         return (SolocraftConfig*)Module::GetConfig();
     }
 
-    void Solocraft::Initialize()
+    void Solocraft::OnInitialize()
     {
         SolocraftConfig.Initialize();
     }

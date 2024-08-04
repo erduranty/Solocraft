@@ -9,6 +9,7 @@ namespace cmangos_module
     {
         public:
             SolocraftConfig();
+            bool OnLoad() override;
             /* static SolocraftConfig& instance()
             {
                 static SolocraftConfig instance;
@@ -40,7 +41,7 @@ namespace cmangos_module
             float D649H25 = 1.0;
 
         private:
-            Config config;
+//          Config config;
     };
 }
 // #define sSolocraftConfig MaNGOS::Singleton<SolocraftConfig>::Instance()

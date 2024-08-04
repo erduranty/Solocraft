@@ -6,7 +6,7 @@ file(GLOB SoloCraft_Source ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp ${CMAKE_CURRENT
     source_group("SoloCraft" FILES ${SoloCraft_Source})
 
 #Define base source library
-set(LIBRARY_SRCS ${SoloCraft_Source)
+set(LIBRARY_SRCS ${SoloCraft_Source})
 
 include_directories(${CMAKE_SOURCE_DIR}/src/modules/modules/src)
 add_definitions(-DENABLE_MODULES)

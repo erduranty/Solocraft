@@ -15,7 +15,7 @@ namespace cmangos_module
     {
         public:
             Solocraft();
-            const SolocraftConfig* GetConfig() const override;          
+            const SolocraftConfig*;          
 
             bool Initialize();
             void OnLogin(Player* player);
